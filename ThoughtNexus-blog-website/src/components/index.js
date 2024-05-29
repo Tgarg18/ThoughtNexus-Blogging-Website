@@ -6,6 +6,7 @@ import logoutBtn from "./Header/logoutBtn";
 import Button from './Button'
 import Select from "./Select";
 import PostCard from "./PostCard";
+import RTE from "./RTE";
 
 export {
     Header,
@@ -15,5 +16,6 @@ export {
     logoutBtn,
     Button,
     Select,
-    PostCard
+    PostCard,
+    RTE
 };
