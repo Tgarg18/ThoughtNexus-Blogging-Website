@@ -21,7 +21,7 @@ const Select = ({
                         key={option}
                         value={option}
                     >
-                        {option.label}
+                        {option}
                     </option>
                 ))}
             </select>

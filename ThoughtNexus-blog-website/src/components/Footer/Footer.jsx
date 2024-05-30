@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {Logo} from '../index'
+import { Logo } from '../index'
 
 const Footer = () => {
   return (
@@ -29,6 +29,7 @@ const Footer = () => {
                   <Link
                     className=" text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/"
+                    draggable="false"
                   >
                     Features
                   </Link>
@@ -37,6 +38,7 @@ const Footer = () => {
                   <Link
                     className=" text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/"
+                    draggable="false"
                   >
                     Pricing
                   </Link>
@@ -45,6 +47,7 @@ const Footer = () => {
                   <Link
                     className=" text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/"
+                    draggable="false"
                   >
                     Affiliate Program
                   </Link>
@@ -53,6 +56,7 @@ const Footer = () => {
                   <Link
                     className=" text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/"
+                    draggable="false"
                   >
                     Press Kit
                   </Link>
@@ -70,6 +74,7 @@ const Footer = () => {
                   <Link
                     className=" text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/"
+                    draggable="false"
                   >
                     Account
                   </Link>
@@ -78,6 +83,7 @@ const Footer = () => {
                   <Link
                     className=" text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/"
+                    draggable="false"
                   >
                     Help
                   </Link>
@@ -86,6 +92,7 @@ const Footer = () => {
                   <Link
                     className=" text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/"
+                    draggable="false"
                   >
                     Contact Us
                   </Link>
@@ -94,6 +101,7 @@ const Footer = () => {
                   <Link
                     className=" text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/"
+                    draggable="false"
                   >
                     Customer Support
                   </Link>
@@ -111,6 +119,7 @@ const Footer = () => {
                   <Link
                     className=" text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/"
+                    draggable="false"
                   >
                     Terms &amp; Conditions
                   </Link>
@@ -119,6 +128,7 @@ const Footer = () => {
                   <Link
                     className=" text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/"
+                    draggable="false"
                   >
                     Privacy Policy
                   </Link>
@@ -127,6 +137,7 @@ const Footer = () => {
                   <Link
                     className=" text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/"
+                    draggable="false"
                   >
                     Licensing
                   </Link>

@@ -1,11 +1,12 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Button, Input, Select, RTE } from '../index'
+import { Button, Input, Select, RTE, Loader } from '../index'
 import appwriteService from '../../appwrite/config'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 const PostForm = ({ post }) => {
+  const [showLoader, setShowLoader] = useState(false)
   const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
     defaultValues: {
       title: post?.title || '',
@@ -18,8 +19,9 @@ const PostForm = ({ post }) => {
   const userData = useSelector(state => state.auth.userData)
 
   const submit = async (data) => {
+    setShowLoader(true)
     if (post) {
-      const file = data.image[0] ? appwriteService.uploadFile(data.image[0]) : null
+      const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
       if (file) {
         appwriteService.deleteFile(post.featuredImage)
       }
@@ -30,6 +32,7 @@ const PostForm = ({ post }) => {
       if (dbPost) {
         navigate(`/post/${dbPost.$id}`)
       }
+      setShowLoader(false)
     } else {
       const file = await appwriteService.uploadFile(data.image[0])
       if (file) {
@@ -43,12 +46,13 @@ const PostForm = ({ post }) => {
           navigate(`/post/${dbPost.$id}`)
         }
       }
+      setShowLoader(false)
     }
   }
 
   const slugTransform = useCallback((value) => {
     if (value && typeof value === 'string') {
-      return value.trim().toLowerCase().replace(/^[a-zA-Z\d\s]+/g, '-').replace(/\s/g, '-')
+      return value.trim().toLowerCase().replace(/[^a-zA-Z\d\s]/g, '').replace(/\s+/g, '-')
     }
     return ""
   }, [])
@@ -130,8 +134,18 @@ const PostForm = ({ post }) => {
           })
           }
         />
-        <Button type='submit' bgColor={post ? "bg-green-500" : undefined} className='w-full'>
-          {post ? 'Update Post' : 'Create Post'}
+        <Button type='submit' bgColor={post ? "bg-green-500" : undefined} className={`h-12 w-full flex justify-center items-center ${showLoader ? 'opacity-50 cursor-none' : ''}}`}>
+          {
+            showLoader ?
+              <Loader />
+              :
+              (
+                post ?
+                  'Update Post'
+                  :
+                  'Create Post'
+              )
+          }
         </Button>
       </div>
     </form>
