@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { login as authLogin } from '../store/authSlice'
-import { Button, Input, Logo } from './index'
+import { Button, Input, Logo, Loader } from './index'
 import { useDispatch } from 'react-redux'
 import authService from '../appwrite/auth'
 import { useForm } from 'react-hook-form'
@@ -11,8 +11,10 @@ const Login = () => {
     const navigate = useNavigate()
     const { register, handleSubmit } = useForm()
     const [error, setError] = useState("")
+    const [showLoader, setShowLoader] = useState(false)
 
     const login = async (data) => {
+        setShowLoader(true)
         setError("")
         try {
             const session = await authService.login(data)
@@ -25,6 +27,9 @@ const Login = () => {
             }
         } catch (error) {
             setError(error.message)
+        }
+        finally {
+            setShowLoader(false)
         }
     }
 
@@ -55,7 +60,14 @@ const Login = () => {
                         <Input label="Password: " placeholder="Enter your password" type="password" {...register("password", {
                             required: true
                         })} />
-                        <Button type="submit" className='w-full'>Sign in</Button>
+                        <Button type="submit" className={`w-full flex justify-center items-center h-12 ${showLoader ? "opacity-50 cursor-none" : ""}`}>
+                            {
+                                (showLoader) ?
+                                    <Loader />
+                                    :
+                                    "Sign in"
+                            }
+                        </Button>
                     </div>
                 </form>
             </div>

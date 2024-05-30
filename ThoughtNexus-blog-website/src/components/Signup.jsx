@@ -4,27 +4,32 @@ import { Link, useNavigate } from 'react-router-dom'
 import { login } from '../store/authSlice'
 import { useDispatch } from 'react-redux'
 import authService from '../appwrite/auth'
-import { Button, Input, Logo } from './index'
+import { Button, Input, Loader, Logo } from './index'
 
 const Signup = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [error, setError] = useState("")
     const { register, handleSubmit } = useForm()
+    const [showLoader, setShowLoader] = useState(false)
 
     const signup = async (data) => {
+        setShowLoader(true)
         setError("")
         try {
             const userData = await authService.createAccount(data)
             if (userData) {
-                const userData1 = await authService.getCurrentUser()
-                if (userData1) {
-                    dispatch(login({ userData1 }))
+                const userData = await authService.getCurrentUser()
+                if (userData) {
+                    dispatch(login({ userData }))
                 }
                 navigate("/")
             }
         } catch (error) {
             setError(error.message)
+        }
+        finally {
+            setShowLoader(false)
         }
     }
 
@@ -62,7 +67,13 @@ const Signup = () => {
                             pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,20}$/
                         })} />
                     </div>
-                    <Button type="submit" className='w-full'>Sign up</Button>
+                    <Button type="submit" className={`w-full flex h-12 justify-center items-center ${showLoader ? "opacity-50 cursor-none" : ""}`}>
+                        {showLoader ?
+                            <Loader />
+                            :
+                            "Sign up"
+                        }
+                    </Button>
                 </form>
             </div>
         </div>
@@ -70,3 +81,6 @@ const Signup = () => {
 }
 
 export default Signup
+
+
+

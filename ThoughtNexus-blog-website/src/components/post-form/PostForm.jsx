@@ -14,9 +14,8 @@ const PostForm = ({ post }) => {
       slug: post?.slug || '',
     }
   })
-  const dispatch = useDispatch()
   const navigate = useNavigate()
-  const userData = useSelector(state => state.user.userData)
+  const userData = useSelector(state => state.auth.userData)
 
   const submit = async (data) => {
     if (post) {
@@ -73,7 +72,7 @@ const PostForm = ({ post }) => {
         <Input
           label="Title: "
           type="text"
-          placegholder="Title"
+          placeholder="Title"
           className="mb-4"
           {
           ...register('title', {
@@ -84,7 +83,7 @@ const PostForm = ({ post }) => {
         <Input
           label="Slug: "
           type="text"
-          placegholder="Slug"
+          placeholder="Slug"
           className="mb-4"
           {
           ...register('slug', {
@@ -124,7 +123,7 @@ const PostForm = ({ post }) => {
         <Select
           options={['active', 'inactive']}
           label="Status: "
-          className="mb-4"
+          className="mb-4 bg-black"
           {
           ...register('status', {
             required: true

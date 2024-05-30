@@ -18,8 +18,8 @@ const Home = () => {
                 <Container>
                     <div className='felx flex-wrap'>
                         <div className="p-2 w-full">
-                            <h1 className='text-2xl font-bold hover:text-gray-500'>
-                                Login to read posts
+                            <h1 className='text-2xl font-bold text-gray-500'>
+                                No Posts to Show!!!
                             </h1>
                         </div>
                     </div>
