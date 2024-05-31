@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import appwriteService from '../appwrite/config'
 import { Button, Container } from '../components/index'
@@ -35,20 +35,27 @@ const Post = () => {
         <div className='py-8'>
             <Container>
                 <div className='w-full flex justify-center mb-4 relative border rounded-xl p-2'>
-                    <img src={appwriteService.getFilePreview(post.featuredImage)} alt={post.title} className='rounded-xl' />
+                    <img src={appwriteService.getFilePreview(post.featuredImage)} alt={post.title} className='rounded-xl mt-12 max-h-96' draggable='false' />
                     {isAuthor && (
-                        <div className='absolute right-6 top-6'>
-                            <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor='bg-green-500' className='mr-3'>Edit</Button>
+                        <div className='absolute right-2 top-2'>
+                            <Link to={`/edit-post/${post.$id}`} draggable='false'>
+                                <Button bgColor='bg-green-500' className='mr-3 hover:opacity-60'>
+                                    Edit
+                                </Button>
                             </Link>
-                            <Button bgColor='bg-red-500' onClick={deletePost}>Delete</Button>
+                            <Button bgColor='bg-red-500' onClick={deletePost} className='hover:opacity-60'>
+                                Delete
+                            </Button>
                         </div>
                     )}
                 </div>
                 <div className='w-full mb-6'>
-                    <h1 className='text-2xl font-bold'>{post.title}</h1>
+                    <h1 className='text-3xl font-bold'>{post.title}</h1>
+                    <p className='text-gray-600 font-semibold my-2'>Posted on: {Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(post.$createdAt))}</p>
                 </div>
-                <div className='browser-css'>{parse(post.content)}</div>
+                <div className='browser-css text-justify'>
+                    {parse(post.content)}
+                </div>
             </Container>
         </div>
     ) : null

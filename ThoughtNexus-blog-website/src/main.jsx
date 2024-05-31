@@ -13,6 +13,8 @@ import EditPost from './pages/EditPost.jsx'
 import Post from './pages/Post.jsx'
 import Login from './pages/Login.jsx'
 import Signup from './pages/Signup.jsx'
+import MyProfile from './pages/MyProfile.jsx'
+import ErrorPage from './pages/ErrorPage.jsx'
 
 
 const router = createBrowserRouter([
@@ -70,15 +72,24 @@ const router = createBrowserRouter([
       {
         path: '/post/:slug',
         element: <Post />
+      },
+      {
+        path: "/my-profile",
+        element: (
+          <AuthLayout authentication>
+            <MyProfile />
+          </AuthLayout>
+        )
+      },
+      {
+        path: '*',
+        element: <ErrorPage />
       }
     ]
   }
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      {/* <App /> */}
-      <RouterProvider router={router} />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
 )

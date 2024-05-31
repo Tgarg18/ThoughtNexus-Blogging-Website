@@ -16,10 +16,10 @@ const Home = () => {
         return (
             <div className='w-full py-8 mt-4 text-center'>
                 <Container>
-                    <div className='felx flex-wrap'>
+                    <div className='flex flex-wrap justify-center items-center'>
                         <div className="p-2 w-full">
                             <h1 className='text-2xl font-bold text-gray-500'>
-                                No Posts to Show!!!
+                                Login to View Posts!!!
                             </h1>
                         </div>
                     </div>
