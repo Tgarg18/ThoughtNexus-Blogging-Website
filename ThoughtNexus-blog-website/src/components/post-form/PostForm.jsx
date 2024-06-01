@@ -120,12 +120,12 @@ const PostForm = ({ post }) => {
         {
           post && (
             <div className='w-full mb-4'>
-              <img src={appwriteService.getFilePreview(post.featuredImage)} alt={post.title} className='rounded-lg' />
+              <img src={appwriteService.getFilePreview(post.featuredImage)} alt={post.title} className='rounded-lg' draggable="false" />
             </div>
           )
         }
         <Select
-          options={['active', 'inactive']}
+          options={['Active', 'Inactive']}
           label="Status: "
           className="mb-4 bg-black"
           {

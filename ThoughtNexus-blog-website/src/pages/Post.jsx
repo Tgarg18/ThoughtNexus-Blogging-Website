@@ -52,6 +52,12 @@ const Post = () => {
                 <div className='w-full mb-6'>
                     <h1 className='text-3xl font-bold'>{post.title}</h1>
                     <p className='text-gray-600 font-semibold my-2'>Posted on: {Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(post.$createdAt))}</p>
+                    {
+                        post.status == "Inactive"?
+                        (<p className='text-white text-lg hover:underline hover:cursor-pointer hover:text-gray-200'>Post Status is Inactive!!! <span>This post is not visible to the public. </span> <span>Go to the edit page to make it active</span></p>)
+                        :
+                        null
+                    }
                 </div>
                 <div className='browser-css text-justify'>
                     {parse(post.content)}

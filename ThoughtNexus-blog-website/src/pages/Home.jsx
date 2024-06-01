@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import appwriteService from '../appwrite/config'
 import { Container, PostCard } from '../components/index'
+import { NavLink } from 'react-router-dom'
 const Home = () => {
     const [posts, setPosts] = useState([])
     useEffect(() => {
@@ -19,7 +20,9 @@ const Home = () => {
                     <div className='flex flex-wrap justify-center items-center'>
                         <div className="p-2 w-full">
                             <h1 className='text-2xl font-bold text-gray-500'>
-                                Login to View Posts!!!
+                                <NavLink to={'/login'} className={`hover:underline hover:cursor-pointer hover:text-black`} draggable="false">
+                                    Login to View Posts!!!
+                                </NavLink>
                             </h1>
                         </div>
                     </div>

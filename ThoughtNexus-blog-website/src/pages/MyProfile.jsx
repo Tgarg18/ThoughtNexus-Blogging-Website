@@ -11,7 +11,7 @@ const MyProfile = () => {
 
   useEffect(() => {
     if (user) {
-      appwriteService.getPosts()
+      appwriteService.getAllPosts()
         .then((posts) => {
           if (posts) {
             const userPosts = posts.documents.filter(post => post.userId === user.$id);
@@ -20,7 +20,7 @@ const MyProfile = () => {
         })
         .catch(error => {
           console.error("Error fetching posts:", error);
-        });
+        })
     }
   }, [user])
 
@@ -42,7 +42,7 @@ const MyProfile = () => {
           {posts.length === 0 ?
             (
               <div className='w-full text-center mt-10'>
-                <Link to={'/add-posts'}>
+                <Link to={'/add-posts'} draggable="false">
                   <p className='text-gray-600 hover:text-black hover:underline'>
                     No Posts Found!!! Click to Add Post
                   </p>

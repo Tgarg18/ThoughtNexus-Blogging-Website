@@ -12,17 +12,12 @@ const RTE = ({ name, control, label, defaultValue = "" }) => {
                 control={control}
                 render={({ field: { onChange } }) => (
                     <Editor
-                    apiKey='zx1v3t6t8cc2u10lc37zrpqm5lyaqeodz2siu81paj0o97dh'
+                        apiKey='zx1v3t6t8cc2u10lc37zrpqm5lyaqeodz2siu81paj0o97dh'
                         initialValue={defaultValue}
                         init={{
                             initialValue: defaultValue,
                             height: 500,
                             menubar: true,
-                            // plugins: [
-                            //     'advlist autolink lists link image charmap print preview anchor',
-                            //     'searchreplace visualblocks code fullscreen',
-                            //     'insertdatetime media table paste code help wordcount'
-                            // ],
                             toolbar: 'undo redo | formatselect | ' +
                                 'bold italic underline backcolor | alignleft aligncenter ' +
                                 'alignright alignjustify | bullist numlist outdent indent | ' +

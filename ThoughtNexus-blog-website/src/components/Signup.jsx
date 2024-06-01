@@ -44,7 +44,7 @@ const Signup = () => {
                 <h2 className='text-center text-2xl font-bold leading-tight'>Sign up to Create Account</h2>
                 <p className='mt-2 text-center text-base text-black/60'>
                     Already have an account?&nbsp;
-                    <Link to="/login" className='font-medium text-primary transition-all duration-200 hover:underline'>
+                    <Link to="/login" className='font-medium text-primary transition-all duration-200 hover:underline' draggable="false">
                         Sign in
                     </Link>
                 </p>
@@ -67,7 +67,7 @@ const Signup = () => {
                             pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,20}$/
                         })} />
                     </div>
-                    <Button type="submit" className={`w-full flex h-12 justify-center items-center ${showLoader ? "opacity-50 cursor-none" : ""}`}>
+                    <Button type="submit" className={`w-full flex mt-4 h-12 justify-center items-center ${showLoader ? "opacity-50 cursor-none" : ""}`}>
                         {showLoader ?
                             <Loader />
                             :
